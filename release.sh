@@ -35,7 +35,7 @@ upload_url=$(curl -s -H "Authorization: token $(cat ~/.ssh/id_rsa)" -H "Accept: 
 
 asset_url=$(curl -s -H "Authorization: token $(cat ~/.ssh/id_rsa)" -H "Accept: application/vnd.github.v3+json" \
   -H "Content-Type: application/zip" \
-  --data-binary @"$ZIP_FILE_NAME" \
+  --data @"$ZIP_FILE_NAME" \
   $upload_url"?name=$ZIP_FILE_NAME" \
   | jq -r '.browser_download_url')
 
